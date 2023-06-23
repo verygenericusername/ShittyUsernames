@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Shitty Username Generator</title>
+<link rel="stylesheet" href="scripts/style.css">
+<script src="scripts/generate.js"></script>
+<link rel="icon" type="image-x/icon" href="icons/favicon.ico">
+</head>
+<body>
+<center>
+  <div class="header">
+  <h1>
+  Shitty Usernames Generator
+  </h1>
+  </div>
+  <br>
+  <br>
+</center>
+<br>
+<br>
+<br>
+<br>
+<center class="center2">
+  <div class="main">
+    <h1 class="am">Generate 1 Usernames</h1><div class="pad"></div><button class="numberButtons nb1">&#11014;</button>
+    <button class="numberButtons nb2">&#11015;</button>
+  </div>
+  <br>
+  <br>
+  <button class="gen">Generate</button>
+  <br>
+  <br>
+  <p>Number List?</p> <input type="checkbox" class="numberlistQM" name="numberlist" checked>
+  <br>
+  <textarea readonly></textarea>
+  <br>
+  <button class="copy">Copy to Clipboard</button>
+  <button class="download">Download</button>
+</center>
+<script>
+  var amount = 1;
+  var min = 1;
+  var am = document.querySelector(".am");
+  var nb1 = document.querySelector(".nb1");
+  var nb2 = document.querySelector(".nb2");
+  var gen = document.querySelector(".gen");
+  var copy = document.querySelector(".copy");
+  var download = document.querySelector(".download");
+  var numberlistQM = document.querySelector(".numberlistQM");
+  var text = document.querySelector("textarea");
+  function numberControls(whattodo,num){
+    const placeHolders = ["Generate "," Usernames"]
+    if(whattodo === "add"){
+      if(!amount < min){
+        amount = amount + num
+      }else{
+        return;
+      }
+    }
+    if(whattodo === "subtract"){
+      if(!amount < min){
+        amount = amount - num
+      }else{
+        amount = min;
+      }
+    }
+    var numStr = amount.toString();
+    am.innerHTML = placeHolders[0] + numStr + placeHolders[1];
+  }
+  nb1.addEventListener("click", function(){
+    numberControls("add",1);
+  });
+  nb2.addEventListener("click", function(){
+    numberControls("subtract",1);
+  });
+  gen.addEventListener("click", function(){
+    var table = usernames.generate(amount,numberlistQM.checked);
+    text.value = "";
+    for(let i = 0; i < table.length; i++){
+      text.value += table[i] + "\n";
+    }
+  });
+  copy.addEventListener("click", function(){
+    if(copy.textContent === "Copy to Clipboard"){
+      text.select();
+    document.execCommand("copy");
+    copy.textContent = "Copied!";
+    setTimeout(function(){
+      copy.textContent = "Copy to Clipboard"
+    },1000);
+    }else if(copy.textContent === "Copied!"){
+      return;
+    }
+  });
+  download.addEventListener("click", function(){
+    var a = document.createElement("a");
+    var data = text.value;
+    var blob = new Blob([data], {type: "application/json"});
+    var url = URL.createObjectURL(blob);
+    a.href = url;
+    a.download = "ShittyUsernames.txt";
+    a.click();
+  });
+</script>
+</body>
+</html>
