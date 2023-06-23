@@ -1,0 +1,61 @@
+@import url("fonts/roboto-bold.ttf");
+*{
+  position:relative;
+}
+body {
+  background-color:#32a852;
+  margin:0;
+  padding:0;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Roboto", sans-serif;
+  text-shadow: 4px 4px 8px black;
+}
+.center2 h1,h2,h3,h4,h5,h6 {
+    font-family: "Roboto", sans-serif;
+    color:White;
+    text-shadow: 4px 4px 8px black;
+  }
+.header {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100px;
+  background-color:green;
+  margin:0;
+  padding:0;
+}
+.header h1,h2,h3,h4,h5,h6 {
+  color:White;
+}
+.main h1 {
+  display: inline-block;
+}
+.main .nb1 {
+  display: inline-block;
+}
+.pad {
+  display:inline-block;
+  padding: 20px;
+}
+.numberButtons {
+  font-size: 45px;
+}
+.gen {
+  width:450px;
+  height:150px;
+  font-size: 50px;
+  font-family: "Roboto", sans-serif;
+}
+textarea {
+  width:750px;
+  height:400px;
+  resize: none;
+}
+p {
+  display:inline-block;
+  color:white;
+  font-family: "Roboto", sans-serif;
+  text-shadow: 4px 4px 8px black;
+}
